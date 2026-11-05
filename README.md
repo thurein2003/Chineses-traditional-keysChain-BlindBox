@@ -28,7 +28,7 @@ npm run build
 npm start
 ```
 
-生产服务器默认监听 `0.0.0.0:3000`，设置 `PORT` 环境变量时自动使用主机分配的端口。仓库包含 Render 的 `render.yaml`，使用新加坡区域免费 Node.js 服务；`.node-version` 固定 Node.js 24 LTS。推送至 `main` 后自动构建部署。
+生产服务器默认监听 `0.0.0.0:3000`，设置 `PORT` 环境变量时自动使用主机分配的端口。仓库包含 Render 的 `render.yaml`，使用新加坡区域免费 Node.js 服务；`.node-version` 固定 Node.js 24 LTS。当前服务通过公开仓库 URL 连接，后续推送需要在 [Render 控制台](https://dashboard.render.com/web/srv-dbma0fp42hec73e3d62g) 选择 Manual Deploy → Deploy latest commit。连接 GitHub 提供商并授权此仓库后，可使用配置中的自动部署，参见 [Render 部署说明](https://render.com/docs/deploys)。
 
 ## 本次升级
 
