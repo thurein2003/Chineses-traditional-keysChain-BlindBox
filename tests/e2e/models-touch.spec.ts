@@ -6,6 +6,10 @@ test("GLB takes priority and both supplied GLB and GLTF load correctly", async (
   page,
   request,
 }) => {
+  test.skip(
+    Boolean(process.env.PLAYWRIGHT_BASE_URL),
+    "Model injection requires access to the local server filesystem.",
+  );
   const path = "public/models/rat.gltf";
   test.skip(
     existsSync(path) || existsSync("public/models/rat.glb"),

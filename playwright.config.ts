@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+const externalBaseURL = process.env.PLAYWRIGHT_BASE_URL;
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: false,
@@ -7,11 +8,11 @@ export default defineConfig({
   expect: { timeout: 12000 },
   reporter: [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: externalBaseURL || "http://localhost:3000",
     ...devices["Desktop Chrome"],
     trace: "retain-on-failure",
   },
-  webServer: {
+  webServer: externalBaseURL ? undefined : {
     command: "npm run dev",
     url: "http://localhost:3000",
     reuseExistingServer: true,

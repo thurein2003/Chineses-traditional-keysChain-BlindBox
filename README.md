@@ -2,6 +2,16 @@
 
 在现有 Next.js 项目上升级的全中文虚拟生肖盲盒体验。保留原始十三张产品图片、公平随机开盒、动画、音效、分享和本地收藏。
 
+## 在线体验与分享
+
+- 网站：https://zodiac-mystery-blindbox.onrender.com
+- GitHub：https://github.com/thurein2003/Chineses-traditional-keysChain-BlindBox
+- 二维码：[PNG 图片](public/share/zodiac-qr.png) · [SVG 矢量图](public/share/zodiac-qr.svg)
+
+![扫描二维码体验十二生肖盲盒](public/share/zodiac-qr.png)
+
+Render 免费实例空闲 15 分钟后会休眠，之后首次访问通常需要约一分钟唤醒，详见 [Render 免费服务说明](https://render.com/docs/free#spinning-down-on-idle)。收藏保存在当前浏览器中；更换设备或网站来源不会自动同步。上线模型应提交到仓库的 `public/models/` 后重新部署。
+
 ## 本地运行
 
 需要 Node.js 20.9 或以上版本，建议使用 22 或 24 LTS。
@@ -101,6 +111,14 @@ npx playwright install chromium
 npm run test:e2e
 npm run build
 ```
+
+针对已部署的网站运行浏览器流程验证：
+
+```sh
+PLAYWRIGHT_BASE_URL=https://zodiac-mystery-blindbox.onrender.com npm run test:e2e
+```
+
+远程验证会跳过需要直接写入服务器模型目录的本地 GLB/GLTF 注入测试；该项在本地执行。
 
 测试覆盖原始资源字节与文件名、全部文化数据、曲面与纤维坐标、公平抽取、动画状态及重复点击保护、正确中奖图文、收藏持久化与异常恢复、十二生肖展台、照片切换、触摸与鼠标控制、模型自动加载、中文与辅助标签、减少动态效果及五种屏幕尺寸。浏览器测试中的受控抽取只存在于测试初始化中，应用实际抽取始终使用浏览器随机数。
 
